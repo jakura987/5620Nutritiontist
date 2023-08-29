@@ -55,13 +55,12 @@ function HomePage() {
     };
 
 
-    // const inputMessage = "please repeat hello";  // 问AI的问题
     
     
     const analysisByAI = async () => { //AI 自动分析
         if (selectedUser) {
             const inputMessage = `请提供个性化的饮食建议和食谱根据身高(简短分析下就行,100字左右): ${selectedUser.height} cm, 体重: ${selectedUser.weight} kg, 健康状况: ${selectedUser.healthStatus}, 饮食习惯: ${selectedUser.dietHabits}, 性别: ${selectedUser.gender}, 年龄: ${selectedUser.age}岁。`;
-
+            // const inputMessage = `repeat 性别: ${selectedUser.gender}`
             try {
                 const response = await axios.post('https://api.openai.com/v1/chat/completions', {
                     model: "gpt-3.5-turbo",
@@ -72,7 +71,7 @@ function HomePage() {
                     temperature: 0.7
                 }, {
                     headers: {
-                        'Authorization': `Bearer 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`, // 使用你的API key
+                        'Authorization': `Bearer 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`, // 使用你的API key
                         'Content-Type': 'application/json',
                     }
                 });
@@ -134,7 +133,7 @@ function HomePage() {
                             <DialogContentText>dietary habits: {selectedUser.dietHabits}</DialogContentText>
                             <TextField
                                 fullWidth
-                                label="Bob's advice"
+                                label="Dr.Bob's advice"
                                 variant="outlined"
                                 multiline
                                 rows={4}
